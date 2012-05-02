@@ -1,7 +1,15 @@
 require 'date'
 require 'active_record'
+require 'fig_leaf'
 
 class Post < ActiveRecord::Base
+  include FigLeaf
+  hide ActiveRecord::Base, ancestors: true,
+    except: [Object, :init_with, :new_record?, :errors, :valid?, :save]
+  hide_singletons ActiveRecord::Calculations,
+                  ActiveRecord::FinderMethods,
+                  ActiveRecord::Relation
+
   validates :title, presence: true
   attr_accessor :blog
 
@@ -14,5 +22,9 @@ class Post < ActiveRecord::Base
 
     self.pubdate = clock.now
     @blog.add_entry(self)
+  end
+
+  def self.most_recent(limit=10)
+    all(order: 'pubdate DESC', limit: limit)
   end
 end

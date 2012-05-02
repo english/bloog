@@ -7,9 +7,7 @@ gem 'dynamic_form'
 
 gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :development, :test do
-  gem 'minitest', '~> 2.11.0'
-  gem 'rr'
+group :test do
   gem 'guard'
   gem 'guard-minitest'
   gem 'guard-passenger'
@@ -17,14 +15,14 @@ group :development, :test do
   gem 'guard-shell'
   gem 'guard-migrate'
   gem 'guard-cucumber'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'minitest', '~> 2.11.0'
+  gem 'rr'
   gem 'rb-inotify' if RUBY_PLATFORM =~ /linux/i
   gem 'libnotify' if RUBY_PLATFORM =~ /linux/i
   gem 'activerecord-nulldb-adapter', 
       :git => "git://github.com/avdi/nulldb.git"
-  gem 'database_cleaner'
-  gem 'cucumber-rails'
-  gem 'launchy'
-  gem 'timecop'
 end
 
 gem 'unicorn'
