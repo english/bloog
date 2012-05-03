@@ -10,7 +10,6 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 group :test do
   gem 'guard'
   gem 'guard-minitest'
-  gem 'guard-passenger'
   gem 'guard-bundler'
   gem 'guard-shell'
   gem 'guard-migrate'
